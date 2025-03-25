@@ -1,10 +1,14 @@
-import './index.css';
+import "./index.css";
+import Login from "./pages/HomeLogin";
+import { BrowserRouter, Route, Routes } from "react-router";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='text-4xl font-bold text-center mt-10'>This is Netflix GPT</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
