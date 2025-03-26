@@ -1,6 +1,11 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState } from "react";
 import { validate } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Body = () => {
   const [isNotAUser, setIsNotAUser] = useState(false);
@@ -17,12 +22,46 @@ const Body = () => {
     //Write or call validation code..
     const validateMessage = validate(
       emailIdRef.current.value,
-      passwordRef.current.value,
+      passwordRef.current.value
       // firstNameRef.current.value,
       // lastNameRef.current.value
     );
     // console.log(firstNameRef.current.value);
     setErrorMessage(validateMessage);
+
+    if (!errorMessage && isNotAUser) {
+      createUserWithEmailAndPassword(
+        auth,
+        emailIdRef.current.value,
+        passwordRef.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + ". " + errorMessage);
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        emailIdRef.current.value,
+        passwordRef.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + ". " + errorMessage);
+        });
+    }
   };
 
   return (

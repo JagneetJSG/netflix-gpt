@@ -8,6 +8,9 @@
 - Sign up form
 - Form Validation
 - useRef hook
+- Firebase configuration
+- Deploy live on firebase
+- used Sign In and Sign Up API's from firebase (Authentication)
 
 
 
