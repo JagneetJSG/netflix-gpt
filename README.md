@@ -18,6 +18,9 @@
 - Fixed Bugs
   - when user signed up the profile data didnt get updated. (For this made the onAuthStateChanged Api added to the Header component)
   - (Redirection fix) used useNavigate hook at one place so that once user logged out it is unable to access browse page and vice versa
+- Code cleanup by adding using unsubscribe fn
+- added constants file 
+
 
 #Features
 

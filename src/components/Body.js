@@ -10,6 +10,7 @@ import {
 import { auth } from "../utils/firebase";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { NETFLIX_BG, USER_AVATAR } from "../utils/constants";
 
 const Body = () => {
   const [isNotAUser, setIsNotAUser] = useState(false);
@@ -48,8 +49,7 @@ const Body = () => {
           console.log(user);
           updateProfile(auth.currentUser, {
             displayName: firstNameRef.current.value,
-            photoURL:
-              "https://lh3.googleusercontent.com/a/ACg8ocLN24GtXpZMfFHyLc1th-MBQwHJmvPPn3gPS98YzuZlF0dOA2Hc=s288-c-no",
+            photoURL: USER_AVATAR
           })
             .then(() => {
               // Profile updated!
@@ -95,7 +95,7 @@ const Body = () => {
 
   return (
     <div className='relative'>
-      <img src='https://assets.nflxext.com/ffe/siteui/vlv3/f6e7f6df-6973-46ef-b98f-12560d2b3c69/web/IN-en-20250317-TRIFECTA-perspective_26f87873-6014-460d-a6fb-1d96d85ffe5f_medium.jpg' />
+      <img src={NETFLIX_BG} />
       <div className='w-4/12 p-10 absolute middle-form top-[50%] left-[50%] bg-black/80 rounded-lg text-white'>
         <h1 className='font-bold text-4xl mb-8'>
           {isNotAUser ? "Sign Up" : "Sign In"}
