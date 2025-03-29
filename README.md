@@ -11,8 +11,13 @@
 - Firebase configuration
 - Deploy live on firebase
 - used Sign In and Sign Up API's from firebase (Authentication)
-
-
+- Redux store created and added a slice named userSlice
+- Added user data to store
+- Added signout api from firebase and added API for updating user profile
+- used the data on Header component
+- Fixed Bugs
+  - when user signed up the profile data didnt get updated. (For this made the onAuthStateChanged Api added to the Header component)
+  - (Redirection fix) used useNavigate hook at one place so that once user logged out it is unable to access browse page and vice versa
 
 #Features
 

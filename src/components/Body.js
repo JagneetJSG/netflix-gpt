@@ -1,15 +1,21 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState } from "react";
 import { validate } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Body = () => {
   const [isNotAUser, setIsNotAUser] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
+  const dispatch = useDispatch();
+
   const handleFormToggle = () => {
     setIsNotAUser(true);
   };
@@ -36,9 +42,32 @@ const Body = () => {
         passwordRef.current.value
       )
         .then((userCredential) => {
+          console.log(auth)
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          updateProfile(auth.currentUser, {
+            displayName: firstNameRef.current.value,
+            photoURL:
+              "https://lh3.googleusercontent.com/a/ACg8ocLN24GtXpZMfFHyLc1th-MBQwHJmvPPn3gPS98YzuZlF0dOA2Hc=s288-c-no",
+          })
+            .then(() => {
+              // Profile updated!
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  photoURL: photoURL,
+                  displayName: displayName,
+                })
+              )
+              // ...
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -75,6 +104,7 @@ const Body = () => {
           {isNotAUser && (
             <input
               ref={firstNameRef}
+              type="text"
               name='FirstName'
               placeholder='FirstName'
               className='p-3 bg-slate-700'
@@ -83,6 +113,7 @@ const Body = () => {
           {isNotAUser && (
             <input
               ref={lastNameRef}
+              type="text"
               name='LastName'
               placeholder='LastName'
               className='p-3 my-4 bg-slate-700'
@@ -90,13 +121,14 @@ const Body = () => {
           )}
           <input
             ref={emailIdRef}
+            type="email"
             name='emilId'
             placeholder='Email Id'
             className='p-3 mb-4 bg-slate-700'
           />
           <input
             ref={passwordRef}
-            name='password'
+            type="password"
             placeholder='Password'
             className='p-3 mb-2 bg-slate-700'
           />

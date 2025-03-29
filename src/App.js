@@ -1,14 +1,20 @@
+import { Provider } from "react-redux";
 import "./index.css";
-import Login from "./pages/HomeLogin";
+import Login from "./pages/Login";
 import { BrowserRouter, Route, Routes } from "react-router";
+import appStore from "./utils/appStore";
+import Browse from "./pages/Browse";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login/>} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={appStore}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route path='/browse' element={<Browse />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
