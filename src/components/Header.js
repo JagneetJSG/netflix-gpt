@@ -13,7 +13,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const user= useSelector(store=>store.user);
   console.log(user)
-
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between'>
+    <div className='flex justify-between z-50'>
       <div className='p-2 w-2/12 items-center	'>
         <img
           className='w-full'

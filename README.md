@@ -20,6 +20,12 @@
   - (Redirection fix) used useNavigate hook at one place so that once user logged out it is unable to access browse page and vice versa
 - Code cleanup by adding using unsubscribe fn
 - added constants file 
+- added browse page and added main and secondary container to it.
+ - Setup TMDB and fetched the movies data from its API (created hook for this to make fn testable and modular)
+ - made a state for trailer video inside of the movie slice in the redux store
+ - made VideoInfo and VideoBackground comp and fetched data from Redux store.
+   - 
+
 
 
 #Features
