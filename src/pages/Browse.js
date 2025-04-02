@@ -7,7 +7,7 @@ const Browse = () => {
   useGetMoviesData();
   return (
     <div className='relative'>
-      <div className='absolute z-10 w-screen bg-gradient-to-b from-gray-950 from-40%'>
+      <div className='absolute z-10 w-screen bg-gradient-to-b from-gray-700 from-30%'>
         <Header />
       </div>
       {/* 

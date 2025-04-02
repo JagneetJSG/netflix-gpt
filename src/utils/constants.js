@@ -15,3 +15,5 @@ export const API_FETCH_DATA = {
 ***REMOVED***
   },
 };
+
+export const MOVIE_IMG_CDN = "https://image.tmdb.org/t/p/w500"

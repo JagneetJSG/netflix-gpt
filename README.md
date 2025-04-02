@@ -24,7 +24,12 @@
  - Setup TMDB and fetched the movies data from its API (created hook for this to make fn testable and modular)
  - made a state for trailer video inside of the movie slice in the redux store
  - made VideoInfo and VideoBackground comp and fetched data from Redux store.
-   - 
+- In Secondary Container
+ - fetched data via API from TMDB and added to redux store and created separate hooks for 3 types-
+   - Now Playing 
+   - Popular
+   - Top Rated
+  and used in the secondary container.
 
 
 
