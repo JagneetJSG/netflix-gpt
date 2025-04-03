@@ -30,6 +30,8 @@
    - Popular
    - Top Rated
   and used in the secondary container.
+- added GPT Search Page with a Bar component
+- added Multilingual feature to GPT Search Page.
 
 
 

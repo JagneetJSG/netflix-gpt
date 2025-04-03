@@ -5,7 +5,6 @@ import VideoBackground from "./VideoBackground";
 
 const MainContainer = () => {
   const moviesData = useSelector((store) => store.movie?.nowPlayingMovies);
-  console.log(moviesData);
 
   if (!moviesData) return;
   const mainMovie = moviesData[0];

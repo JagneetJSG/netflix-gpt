@@ -12,7 +12,6 @@ export const validate = (
 //   const validateFirstName = /^[a-zA-Z]+$/.test(firstnameRef);
 //   const validateLastName = /^[a-zA-Z]+$/.test(lastNameRef);
 
-//   console.log(validateFirstName);
   if (!validateEmail) return "Invalid Email Id!!";
   if (!validatePassword) return "Invalid Password!!";
 //   if (!validateFirstName) return "Invalid First Name!!";

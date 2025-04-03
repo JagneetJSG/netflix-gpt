@@ -16,4 +16,25 @@ export const API_FETCH_DATA = {
   },
 };
 
-export const MOVIE_IMG_CDN = "https://image.tmdb.org/t/p/w500"
+export const MOVIE_IMG_CDN = "https://image.tmdb.org/t/p/w500";
+
+export const LANGUAGE_MODES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hi", name: "Hindi" },
+  { identifier: "es", name: "Spanish" },
+];
+
+export const language = {
+  en: {
+    search: "Search",
+    placeholder: "What you would like to watch?",
+  },
+  hi: {
+    search: "खोज",
+    placeholder: "आप क्या देखना चाहेंगे?",
+  },
+  es: {
+    search: "Buscar",
+    placeholder: "¿Qué te gustaría ver?",
+  },
+};

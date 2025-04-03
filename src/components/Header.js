@@ -6,14 +6,23 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { NETFLIX_LOGO } from "../utils/constants";
+import { LANGUAGE_MODES, NETFLIX_LOGO } from "../utils/constants";
+import { changeLanguage } from "../utils/appConfigurationsSlice";
 
-const Header = () => {
+const Header = ({ stateVariable, setShouldGptOpen }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user= useSelector(store=>store.user);
-  console.log(user)
-  
+  const user = useSelector((store) => store.user);
+
+  const handleGptSearchClick = () => {
+    //load GPT page
+    setShouldGptOpen();
+  };
+
+  const handleLanguageChangeClick = (e) => {
+    dispatch(changeLanguage(e.target.value))
+    console.log(e.target.value);
+  };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -47,30 +56,48 @@ const Header = () => {
         navigate("/");
       })
       .catch((error) => {
-        navigate("/error")
+        navigate("/error");
       });
   };
 
   return (
     <div className='flex justify-between z-50'>
       <div className='p-2 w-2/12 items-center	'>
-        <img
-          className='w-full'
-          src={NETFLIX_LOGO}
-        />
+        <img className='w-full' src={NETFLIX_LOGO} />
       </div>
-      { user && <div className='flex p-8 w-2/12 justify-between items-center'>
-        <img
-          src={user.photoURL}
-          className='h-12 w-12'
-        />
-        <button
-          onClick={handleSignOut}
-          className='text-white font-bold text-2xl cursor-pointer'
-        >
-          Sign&nbsp;Out<br/><span className="text-pink-500">{user.displayName}</span>
-        </button>
-      </div>}
+      {user && (
+        <div className='flex p-8 w-4/12 justify-between items-center'>
+          <button
+            onClick={handleGptSearchClick}
+            className='bg-[#999999] rounded-lg border-black border-2 p-2 text-xl font-bold text-white'
+          >
+            {stateVariable ? "Home Page" : "GPT Search"}
+          </button>
+          {stateVariable && (
+            <select
+              onChange={handleLanguageChangeClick}
+              className='bg-[#999999] rounded-lg border-black border-2 p-2 text-xl font-bold'
+            >
+              {LANGUAGE_MODES.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.name}
+                </option>
+              ))}
+            </select>
+          )}
+          <div className='flex items-center'>
+            <img src={user.photoURL} className='h-12 w-12' />
+            <button
+              onClick={handleSignOut}
+              className='text-white font-bold text-2xl cursor-pointer'
+            >
+              Sign&nbsp;Out
+              <br />
+              <span className='text-pink-500'>{user.displayName}</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -33,7 +33,6 @@ const Body = () => {
       // firstNameRef.current.value,
       // lastNameRef.current.value
     );
-    // console.log(firstNameRef.current.value);
     setErrorMessage(validateMessage);
 
     if (!errorMessage && isNotAUser) {
@@ -43,10 +42,8 @@ const Body = () => {
         passwordRef.current.value
       )
         .then((userCredential) => {
-          console.log(auth)
           // Signed up
           const user = userCredential.user;
-          console.log(user);
           updateProfile(auth.currentUser, {
             displayName: firstNameRef.current.value,
             photoURL: USER_AVATAR
@@ -83,7 +80,6 @@ const Body = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
