@@ -32,6 +32,14 @@
   and used in the secondary container.
 - added GPT Search Page with a Bar component
 - added Multilingual feature to GPT Search Page.
+- configured openai api in project
+- made useGptFetchFromTMDB hook for fetching ai suggestions and then getting the movies list from the TMDB.
+- created search bar and attached its value with state variable 
+- created GPT slice in redux store.
+- connected handleClick with search btn functionality
+- created TMDBSuggestions component and shown on the page.
+ 
+
 
 
 

@@ -21,7 +21,6 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
 
   const handleLanguageChangeClick = (e) => {
     dispatch(changeLanguage(e.target.value))
-    console.log(e.target.value);
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {

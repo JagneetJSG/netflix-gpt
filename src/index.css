@@ -5,3 +5,7 @@
 .middle-form{
     transform: translate(-50%, -50%);
 }
+.scroll-container::-webkit-scrollbar{
+    display: none;
+    scrollbar-width: none;
+}
