@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { LANGUAGE_MODES, NETFLIX_LOGO } from "../utils/constants";
 import { changeLanguage } from "../utils/appConfigurationsSlice";
+import { removeGPTData } from "../utils/gptFunctionalityData";
 
 const Header = ({ stateVariable, setShouldGptOpen }) => {
   const navigate = useNavigate();
@@ -18,10 +19,14 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
     //load GPT page
     setShouldGptOpen();
   };
-
   const handleLanguageChangeClick = (e) => {
-    dispatch(changeLanguage(e.target.value))
+    dispatch(changeLanguage(e.target.value));
   };
+  useEffect(() => {
+    if (!stateVariable) {
+      dispatch(removeGPTData());
+    }
+  }, [stateVariable]);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {

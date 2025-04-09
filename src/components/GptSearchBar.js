@@ -13,10 +13,7 @@ const GptSearchBar = () => {
   const handleGPTSearchClick = useGptFetchFromTMDB(inputRef);
   return (
     <div>
-      <form
-        onSubmit={(e) => e.preventDefault()}
-        className='grid grid-cols-12'
-      >
+      <form onSubmit={(e) => e.preventDefault()} className='grid grid-cols-12'>
         <input
           ref={inputRef}
           value={inputValue}

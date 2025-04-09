@@ -12,8 +12,12 @@ const GPTFunctionalityData = createSlice({
       state.gptNames = GptRecommendedMovies;
       state.tmdbGptMovies = moviesData;
     },
+    removeGPTData: ()=>{
+      return {gptNames: null, tmdbGptMovies: null};
+    }
   },
 });
 
-export const { addGPTSuggestedMovies } = GPTFunctionalityData.actions;
+export const { addGPTSuggestedMovies, removeGPTData } =
+  GPTFunctionalityData.actions;
 export default GPTFunctionalityData.reducer;

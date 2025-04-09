@@ -9,3 +9,14 @@
     display: none;
     scrollbar-width: none;
 }
+
+/* Concept Learning Section css */
+.section {
+    border: 2px solid black;
+    padding: 10px;
+}
+.fancy{
+    border-color: red;
+}
+
+/*  */
