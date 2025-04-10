@@ -11,8 +11,7 @@ export const API_FETCH_DATA = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-***REMOVED***
+    Authorization: process.env.REACT_APP_TMDB_KEY,
   },
 };
 
@@ -39,4 +38,4 @@ export const language = {
   },
 };
 
-***REMOVED***
+export const OPENAI_API_KEY = process.env.REACT_APP_AI_KEY;
