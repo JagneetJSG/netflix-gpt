@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { API_FETCH_DATA } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMovieTrailers } from "../utils/nowPlayingMovieSlice";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
+
+  const trailerMovie = useSelector(store => store.movie.addMovieTrailers)
 
   const movieTrailer = async () => {
     const data = await fetch(
@@ -23,6 +25,7 @@ const useMovieTrailer = (movieId) => {
 };
 
 useEffect(() => {
+  if(!trailerMovie)
    movieTrailer();
 }, []);
 };

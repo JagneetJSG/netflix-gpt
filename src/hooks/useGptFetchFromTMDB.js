@@ -37,7 +37,6 @@ const useGptFetchFromTMDB = (inputRef) => {
       FetchMoviesFromDatabase(movie)
     );
     const moviesData = await Promise.all(PromisesArray);
-    console.log(moviesData);
     dispatch(addGPTSuggestedMovies({ GptRecommendedMovies, moviesData }));
   };
   return handleGPTSearchClick;

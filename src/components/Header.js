@@ -9,6 +9,7 @@ import { addUser, removeUser } from "../utils/userSlice";
 import { LANGUAGE_MODES, NETFLIX_LOGO } from "../utils/constants";
 import { changeLanguage } from "../utils/appConfigurationsSlice";
 import { removeGPTData } from "../utils/gptFunctionalityData";
+import { removeMovieCategoriesData } from "../utils/nowPlayingMovieSlice";
 
 const Header = ({ stateVariable, setShouldGptOpen }) => {
   const navigate = useNavigate();
@@ -58,6 +59,7 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
       .then(() => {
         // Sign-out successful.
         navigate("/");
+        dispatch(removeMovieCategoriesData());
       })
       .catch((error) => {
         navigate("/error");
