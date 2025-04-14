@@ -15,11 +15,13 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
+  const [isToggle, setIsToggle] = useState(false);
 
   const screenWidth = window.innerWidth;
   const handleGptSearchClick = () => {
     //load GPT page
     setShouldGptOpen();
+    setIsToggle(!isToggle)
   };
   const handleLanguageChangeClick = (e) => {
     dispatch(changeLanguage(e.target.value));
@@ -70,16 +72,16 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
   return (
     <div className='flex justify-between z-40'>
       <div className='p-2 w-2/12 items-center	'>
-        <img className='w-full' src={NETFLIX_LOGO} />
+        <img className='w-full logo-img' src={NETFLIX_LOGO} />
       </div>
       {user &&
         (screenWidth > 991 ? (
           <div className='flex p-8 w-4/12 justify-between items-center'>
             <button
               onClick={handleGptSearchClick}
-              className='bg-[#999999] rounded-lg border-black border-2 p-2 text-xl font-bold text-white'
+              className='bg-[#ff0606] rounded-lg border-black border-2 p-2 text-xl font-bold text-white'
             >
-              {stateVariable ? "Home Page" : "GPT Search"}
+              {stateVariable ? "Home" : "GPT 🔍"}
             </button>
             {stateVariable && (
               <select
@@ -113,6 +115,8 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
               langChange={handleLanguageChangeClick}
               handleSignout={handleSignOut}
               user={user}
+              isToggle={isToggle}
+              setIsToggle={()=> setIsToggle(!isToggle)}
             />
           </div>
         ))}
@@ -128,10 +132,11 @@ export const MenuItems = ({
   langChange,
   handleSignout,
   user,
+  isToggle,
+  setIsToggle
 }) => {
-  const [isToggle, setIsToggle] = useState(false);
   const toggleMenuItems = () => {
-    setIsToggle(!isToggle);
+    setIsToggle();
   };
   return (
     <div>
@@ -145,14 +150,14 @@ export const MenuItems = ({
           <div className='menu-item-box'>
             <button
               onClick={GptSearchBtn}
-              className='bg-[#999999] rounded-lg border-black border-2 p-1 text-md font-bold text-white'
+              className='bg-[#ff0606] rounded-lg border-black border-2 p-1 text-md font-bold text-white'
             >
-              {stateVariable ? "Home Page" : "GPT Search"}
+              {stateVariable ? "Home" : "GPT 🔍"}
             </button>
             {stateVariable && (
               <select
                 onChange={langChange}
-                className='bg-[#999999] rounded-lg border-black border-2 p-2 text-md font-bold'
+                className='bg-[#ff0606] text-white rounded-lg border-black border-2 p-2 text-md font-bold'
               >
                 {LANGUAGE_MODES.map((lang) => (
                   <option key={lang.identifier} value={lang.identifier}>

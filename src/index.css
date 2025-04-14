@@ -32,9 +32,10 @@
   border-radius: 4px;
   padding: 3px;
   position: absolute;
-  top: 29px;
+  top: 55px;
   right: 0;
   width: 27%;
+  background-color: black;
 }
 .menu-item-box {
   display: flex;
