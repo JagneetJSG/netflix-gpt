@@ -20,9 +20,7 @@ const GptSearchBar = () => {
           onChange={handleChange}
           type='text'
           placeholder={
-            !inputValue
-              ? "Type Something..."
-              : language[languageMode].placeholder
+            !inputValue && language[languageMode].placeholder
           }
           className='p-3 col-span-10'
         ></input>

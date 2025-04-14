@@ -41,8 +41,8 @@
 - added dispatch fn to header so that when user click the Home Page button on GPT search page and comes back to this page, then the TmdbSuggestions component should not be visible(this is done by making the states null which are responsible for the search section data maintainance.)
 - added dispatch action(logic in header section) to remove movies data from the store as soon as user signs out of the website.
 - memoization of data- if data is there in store no need to make api calls again and again.
-
-
+- fixes to warnings in console
+- added the hamburger icon and functionality on mobile devies on Header component.
 
 
 #Features
