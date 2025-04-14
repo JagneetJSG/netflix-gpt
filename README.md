@@ -43,7 +43,7 @@
 - memoization of data- if data is there in store no need to make api calls again and again.
 - fixes to warnings in console
 - added the hamburger icon and functionality on mobile devies on Header component.
-
+- Added Responsiveness to the site.
 
 #Features
 

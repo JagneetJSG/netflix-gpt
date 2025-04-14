@@ -73,7 +73,7 @@ const Header = ({ stateVariable, setShouldGptOpen }) => {
         <img className='w-full' src={NETFLIX_LOGO} />
       </div>
       {user &&
-        (screenWidth > 768 ? (
+        (screenWidth > 991 ? (
           <div className='flex p-8 w-4/12 justify-between items-center'>
             <button
               onClick={handleGptSearchClick}

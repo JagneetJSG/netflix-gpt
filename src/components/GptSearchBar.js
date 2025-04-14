@@ -19,14 +19,12 @@ const GptSearchBar = () => {
           value={inputValue}
           onChange={handleChange}
           type='text'
-          placeholder={
-            !inputValue && language[languageMode].placeholder
-          }
+          placeholder={!inputValue && language[languageMode].placeholder}
           className='p-3 col-span-10'
-        ></input>
+        />
         <button
           onClick={handleGPTSearchClick}
-          className='col-span-2 text-white font-bold text-2xl bg-[red]'
+          className='col-span-2 text-white font-bold text-lg md:text-2xl bg-[red]'
           disabled={!inputValue}
         >
           {language[languageMode].search}

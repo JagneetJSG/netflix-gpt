@@ -2,35 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-.middle-form{
+@media (min-width: 768px) {
+  .middle-form-sm {
     transform: translate(-50%, -50%);
+  }
 }
-.scroll-container::-webkit-scrollbar{
-    display: none;
-    scrollbar-width: none;
+
+.middle-form {
+  transform: translate(-50%, -50%);
+}
+.scroll-container::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
 }
 
 /* Concept Learning Section css */
 .section {
-    border: 2px solid black;
-    padding: 10px;
+  border: 2px solid black;
+  padding: 10px;
 }
-.fancy{
-    border-color: red;
+.fancy {
+  border-color: red;
 }
 
 /*  */
 
-.mobile-menu{
-    border: 2px solid red;
-    border-radius: 4px;
-    padding: 3px;
-    position: absolute;
-    top: 29px;
-    right: 0;
-    width: 27%;
+.mobile-menu {
+  border: 2px solid red;
+  border-radius: 4px;
+  padding: 3px;
+  position: absolute;
+  top: 29px;
+  right: 0;
+  width: 27%;
 }
-.menu-item-box{
-    display: flex;
-    flex-direction: column;
+.menu-item-box {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .logo-img {
+    min-width: 150px;
+  }
 }

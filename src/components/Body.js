@@ -91,8 +91,8 @@ const Body = () => {
 
   return (
     <div className='relative'>
-      <img src={NETFLIX_BG} />
-      <div className='w-4/12 p-10 absolute middle-form top-[50%] left-[50%] bg-black/80 rounded-lg text-white'>
+      <img className="h-screen w-screen object-cover" src={NETFLIX_BG} />
+      <div className='w-11/12 md:w-6/12 lg:w-4/12 p-6 md:p-10 absolute middle-form top-[45%] md:top-[50%] left-[50%] bg-black/80 rounded-lg text-white'>
         <h1 className='font-bold text-4xl mb-8'>
           {isNotAUser ? "Sign Up" : "Sign In"}
         </h1>
